@@ -80,7 +80,7 @@ md6
 
         map = new Map("map",{
           basemap: "streets",
-          center: [289, 42],
+          center: [289, 42.3],
           zoom: 11,
           minZoom: 2
         });
@@ -127,16 +127,16 @@ md6
 
     <script type="text/javascript">
 
-    var mapping = {"rating":"rating", "description":"description", "firstname":"name", "lastname":"name", "charge":"price","location":"location"};
+    var mapping = {"rating":"rating", "description":"description", "firstname":"name", "lastname":"name", "charge":"cost","location":"location"};
       
-      $.get('http://172.26.4.103:5000/eventsearch/{"user_email":"Sawayn.M@gmail.com", "location":"New Lincoln", "start_time":"2016-11-14  1:00", "end_time":"2016-11-18 23:00"}', function(data){
+      $.get('http://172.26.4.103:5000/eventsearch/{"user_email":"Sawayn.M@gmail.com", "location":"Boston", "start_time":"2016-11-11  1:00", "end_time":"2016-11-20 23:00"}', function(data){
 
         index = 1;
 
         $.each(data, function(d){
           $.each(this, function(key, val) {
-            console.log(val)
-            console.log("KEYS"+"#"+mapping[key]+"-"+index);
+            // console.log(val)
+            // console.log("KEYS"+"#"+mapping[key]+"-"+index);
             if(mapping[key] == "rating")
             {
               for(var i = 0; i<val; i++)
@@ -144,6 +144,11 @@ md6
                 console.log("add-star"+mapping[key])
                 $("#"+mapping[key]+"-"+index).append('<span>☆</span>');
               }
+            }
+            else if(mapping[key] == "cost")
+            {
+              //console.log(((Math.floor(Math.random() * 20) + 5)))
+              $("#"+mapping[key]+"-"+index).html("$"+val);//(Math.floor(Math.random() * 20) + 15));
             }
             else
              $("#"+mapping[key]+"-"+index).html(val);
@@ -217,7 +222,9 @@ md6
           </div>
           <div class="col-md-6 guideName">
             <h3 id="name-1">Bill Rudford</h3>
-            <p id="location-1" class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color: #ffc425'></span>Wrigley Field</p>
+            <p class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color: #ffc425' id="location-1" >
+              Wrigley Field
+            </span></p>
           </div>
           <div class="col-md-3 price-cls">
             <h3 id="cost-1">$25</h3>
@@ -228,8 +235,7 @@ md6
               
           </div>
           <p class="card-header-text" style="margin: 10px; font-size: 18px;" id="description-1">Baseball match at Wrigley Field</p>
-              <p style="margin-left:9px; margin-top:18px;"> Description of the event planned by the guide. With supporting text below as a natural lead-in to additional content.
-              Description of the event planned by the guide</p>
+              <p style="margin-left:9px; margin-top:18px;"> Spend a casual evening with great company going over the little sights of Boston!</p>
           <div style="text-align:center">  
             <button class="btn btn-primary btn-cls" style="margin-top: 15px; background-color: #F05F40; font-size:15px;"
             onclick="$(this).attr('style', 'background-color: #00b159');">Purchase tour </button> 
@@ -246,7 +252,9 @@ md6
           </div>
           <div class="col-md-6 guideName">
             <h3 id="name-2">Bill Rudford</h3>
-            <p id="location-2" class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style="color: #fb5858;"></span>Wrigley Field</p>
+            <p class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style="color: #fb5858;" id="location-2">
+              Wrigley Field
+            </span></p>
           </div>
           <div class="col-md-3 price-cls">
             <h3 id="cost-2">$25</h3>
@@ -257,8 +265,7 @@ md6
               
           </div>
           <p class="card-header-text" style="margin: 10px; font-size: 18px;" id="description-2">Baseball match at Wrigley Field</p>
-              <p style="margin-left:9px; margin-top:18px;"> Description of the event planned by the guide. With supporting text below as a natural lead-in to additional content.
-              Description of the event planned by the guide</p>
+              <p style="margin-left:9px; margin-top:18px;"> Enjoy the hospitality of a great comedian! I bet I'll make you laugh!</p>
           <div style="text-align:center">  
             <button class="btn btn-primary btn-cls" style="margin-top: 15px; background-color: #F05F40; font-size:15px;">Purchase tour </button> 
           </div> 
@@ -274,7 +281,9 @@ md6
           </div>
           <div class="col-md-6 guideName">
             <h3 id="name-3">Bill Rudford</h3>
-            <p id="location-3" class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color:#428bca;'></span>Wrigley Field</p>
+            <p class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color:#428bca;' id="location-3">
+              Wrigley Field
+            </span></p>
           </div>
           <div class="col-md-3 price-cls">
             <h3 id="cost-3">$25</h3>
@@ -285,8 +294,7 @@ md6
               
           </div>
           <p class="card-header-text" style="margin: 10px; font-size: 18px;" id="description-3">Baseball match at Wrigley Field</p>
-              <p style="margin-left:9px; margin-top:18px;"> Description of the event planned by the guide. With supporting text below as a natural lead-in to additional content.
-              Description of the event planned by the guide</p>
+              <p style="margin-left:9px; margin-top:18px;">Music? Sports? Politics? I'm up for it all! Let's hang out soon!</p>
           <div style="text-align:center">  
             <button class="btn btn-primary btn-cls" style="margin-top: 15px; background-color: #F05F40; font-size:15px;">Purchase tour </button> 
           </div> 
@@ -302,7 +310,9 @@ md6
           </div>
           <div class="col-md-6 guideName">
             <h3 id="name-4">Bill Rudford</h3>
-            <p id="location-4" class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color:#00b159;'></span>Wrigley Field</p>
+            <p class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color:#00b159;' id="location-4">
+              Wrigley Field
+            </span></p>
           </div>
           <div class="col-md-3 price-cls">
             <h3 id="cost-4">$25</h3>
@@ -313,8 +323,7 @@ md6
               
           </div>
           <p class="card-header-text" style="margin: 10px; font-size: 18px;" id="description-4">Baseball match at Wrigley Field</p>
-              <p style="margin-left:9px; margin-top:18px;"> Description of the event planned by the guide. With supporting text below as a natural lead-in to additional content.
-              Description of the event planned by the guide</p>
+              <p style="margin-left:9px; margin-top:18px;">Adventurous? Let's explore the unknown together! I'll keep you safe, I promise :P</p>
           <div style="text-align:center">  
             <button class="btn btn-primary btn-cls" style="margin-top: 15px; background-color: #F05F40; font-size:15px;">Purchase tour </button> 
           </div> 
@@ -330,7 +339,9 @@ md6
           </div>
           <div class="col-md-6 guideName">
             <h3 id="name-5">Bill Rudford</h3>
-            <p id="location-5" class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color:#f37735;'></span>Wrigley Field</p>
+            <p class="location-cls"><span class="glyphicon glyphicon-map-marker marker-cls" style='color:#f37735;' id="location-5">
+              Wrigley Field
+            </span></p>
           </div>
           <div class="col-md-3 price-cls">
             <h3 id="cost-5">$25</h3>
@@ -341,8 +352,7 @@ md6
               
           </div>
           <p class="card-header-text" style="margin: 10px; font-size: 18px;" id="description-5">Baseball match at Wrigley Field</p>
-              <p style="margin-left:9px; margin-top:18px;"> Description of the event planned by the guide. With supporting text below as a natural lead-in to additional content.
-              Description of the event planned by the guide</p>
+              <p style="margin-left:9px; margin-top:18px;">  Are you geeky? I certainly am. Let me show you the geeky hangouts of Boston!</p>
           <div style="text-align:center">  
             <button class="btn btn-primary btn-cls" style="margin-top: 15px; background-color: #F05F40; font-size:15px;">Purchase tour </button> 
           </div> 
